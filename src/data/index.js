@@ -5,6 +5,7 @@ import { BRONZE_EVENTS } from './events-bronze.js'
 import { AXIAL_EVENTS } from './events-axial.js'
 import { KINGDOMS_EVENTS } from './events-kingdoms.js'
 import { MODERN_EVENTS } from './events-modern.js'
+import { FUTURE_EVENTS } from './events-future.js'
 
 export * from './eras.js'
 export * from './categories.js'
@@ -16,7 +17,8 @@ export const ALL_EVENTS = [
   ...BRONZE_EVENTS,
   ...AXIAL_EVENTS,
   ...KINGDOMS_EVENTS,
-  ...MODERN_EVENTS
+  ...MODERN_EVENTS,
+  ...FUTURE_EVENTS
 ].sort((a, b) => a.hy - b.hy)
 
 export const EVENT_COUNT = ALL_EVENTS.length

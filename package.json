@@ -3,11 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Explore 12,026 years of Earth & human history on the Holocene Year calendar (Gregorian + 10000).",
+  "description": "Explore 13,100 years of human history and future lore on the Holocene Year calendar.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:cf": "npm run build && wrangler dev",
+    "deploy:cf": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.1.1",
@@ -17,6 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^6.0.7"
+    "vite": "^6.0.7",
+    "wrangler": "4.149.0"
   }
 }

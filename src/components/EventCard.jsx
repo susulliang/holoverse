@@ -17,6 +17,7 @@ export default function EventCard({ event }) {
         <span className="card-hy" style={{ color: era.color }}>{event.hy.toLocaleString()} HY</span>
         <span className="card-greg">{greg}</span>
         <span className="card-cat" style={{ background: cat.color }}>{cat.singular}</span>
+        {event.lore && <span className="card-lore-tag">Future lore</span>}
       </div>
       <h3 className="card-title">{event.t}</h3>
       <p className="card-desc">{event.d}</p>

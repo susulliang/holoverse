@@ -3,7 +3,7 @@ import Header from './components/Header.jsx'
 import Timeline from './components/Timeline.jsx'
 import EraBadges from './components/EraBadges.jsx'
 import CardWall from './components/CardWall.jsx'
-import { ALL_EVENTS, HY_NOW, CATEGORIES, CATEGORY_IDS } from './data/index.js'
+import { ALL_EVENTS, HY_NOW, HY_END, CATEGORIES, CATEGORY_IDS } from './data/index.js'
 
 const WINDOWS = [25, 50, 100, 250, 500, Infinity]
 
@@ -18,14 +18,35 @@ export default function App() {
     return list
   }, [hy, windowHalf, activeCat])
 
-  const windowLabel = (w) => (w === Infinity ? 'All 12,026' : `±${w} yr`)
+  const windowLabel = (w) => (w === Infinity ? `All ${HY_END.toLocaleString()}` : `±${w} yr`)
 
   return (
     <div className="app">
       <Header hy={hy} />
 
       <main className="app-main">
+        <section className="intro">
+          <div className="intro-copy">
+            <p className="eyebrow"><span className="eyebrow-line" />A living atlas of time</p>
+            <h2>{HY_END.toLocaleString()} years.<br /><span>One continuous story.</span></h2>
+            <p className="intro-description">
+              Move through the human era, from the first settled communities to an imagined future among the stars.
+            </p>
+          </div>
+          <div className="intro-note">
+            <span className="note-orbit" aria-hidden="true"><i /><i /><i /></span>
+            <span>One calendar<br /><b>Everything connected</b></span>
+          </div>
+        </section>
+
         <section className="timeline-section">
+          <div className="section-heading">
+            <div>
+              <p className="section-kicker">01 / Navigate</p>
+              <h2>Find your moment</h2>
+            </div>
+            <span className="section-hint">Drag the marker or choose an era</span>
+          </div>
           <Timeline hy={hy} onChange={setHy} />
           <EraBadges hy={hy} onJump={setHy} />
 
@@ -67,17 +88,25 @@ export default function App() {
             )}
           </div>
 
-          <p className="wall-meta">
-            Showing <b>{visibleEvents.length}</b> moments near <b>HY {hy.toLocaleString()}</b>
-            {activeCat !== 'all' && <> · filtered by <b>{CATEGORIES[activeCat].singular}</b></>}
-          </p>
         </section>
 
-        <CardWall events={visibleEvents} showGuide={windowHalf <= 100} />
+        <section className="moments-section">
+          <div className="moments-heading">
+            <div>
+              <p className="section-kicker">02 / Discover</p>
+              <h2>Moments in the making</h2>
+            </div>
+            <p className="wall-meta">
+              <b>{visibleEvents.length}</b> {visibleEvents.length === 1 ? 'moment' : 'moments'} near HY {hy.toLocaleString()}
+              {activeCat !== 'all' && <> <span className="meta-divider">/</span> {CATEGORIES[activeCat].singular}</>}
+            </p>
+          </div>
+          <CardWall events={visibleEvents} showGuide={windowHalf <= 100} />
+        </section>
       </main>
 
       <footer className="app-footer">
-        <p>HoloYear counts years from 10,000 BCE, when the Holocene began — because 2026 is just a number, but 12,026 is a story.</p>
+        <p>HoloYear counts forward from 10,000 BCE. Human-Ever-After is a fictional future-history arc spanning 2025–3100 CE; its events are lore, not recorded history.</p>
       </footer>
     </div>
   )

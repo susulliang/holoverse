@@ -1,4 +1,4 @@
-// The Modern Surge — HY 11500 to 12026 (1500–2026 CE).
+// The Modern Surge — HY 11500 to 12024 (1500–2024 CE); the present marker is at HY 12026.
 // Print, steam, flight, atoms, orbit, silicon. From one printing press to eight billion minds online.
 
 export const MODERN_EVENTS = [
